@@ -9,14 +9,14 @@ public class Receiver : MonoBehaviour
     private bool isSend = false;
 
     private float delta = 3.0f; 
-    private float interval = 1.0f;
+    private float interval = 5.0f;
     PlayerHeartRateData datas = default;
 
     void Start()
     {
         datas = PlayerHeartRateData.GetInstance();
 
-        ws = new WebSocket( "ws://localhost:3000/" );
+        ws = new WebSocket( "ws://localhost:3000" );
 
         ws.OnOpen += ( sender, e ) =>
         {

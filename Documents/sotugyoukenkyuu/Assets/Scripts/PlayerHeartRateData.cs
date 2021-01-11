@@ -52,7 +52,7 @@ public class PlayerHeartRateData
     public void  Add(HeartRate heartRate)
     {
         dataList.Add(heartRate);
-        if (title != null && heartRate.heartRate > title.heartRate*1.1f )
+        if (title != null && heartRate.heartRate < title.heartRate*1.05f )
         {
             overListener?.Invoke();
         }
