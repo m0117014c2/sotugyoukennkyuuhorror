@@ -8,7 +8,10 @@ public class MainScene : MonoBehaviour
     private Receiver receiver;
 
     [SerializeField]
-    private AudioSource au;
+    private Flash flash;
+
+    [SerializeField]
+    private Full full;
 
     [SerializeField]
     private FirstPersonController player;
@@ -20,6 +23,7 @@ public class MainScene : MonoBehaviour
     {
         StartCoroutine(StartConnect());
         receiver.AddListener(OnHeartOver);
+        player.AddAnimCallback(Full);
     }
 
     private void Update()
@@ -57,6 +61,8 @@ public class MainScene : MonoBehaviour
     public IEnumerator PlayHorror()
     {
         float r = Random.Range(0, 1.0f);
+        //Flash();
+        
         if (r > 0.5)
         {
             player.PlayHorrorSound();
@@ -64,10 +70,17 @@ public class MainScene : MonoBehaviour
         else {
             Flash();
         }
+        
         yield break;
     }
 
     private void Flash()
     {
+        flash.Show(1);
+    }
+
+    private void Full()
+    {
+        full.Show(2);
     }
 }

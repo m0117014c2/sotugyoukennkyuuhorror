@@ -42,6 +42,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        [SerializeField]
+        private Transform p1;
+
+        [SerializeField]
+        private Transform p2;
+
+        private bool usedP1 = false;
+        private bool usedP2 = false;
+
+        Action animCallback = default;
+
         // Use this for initialization
         private void Start()
         {
@@ -61,6 +72,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            if (!usedP1)
+            {
+                var dis1 = Vector3.Distance(gameObject.transform.position, p1.position);
+                if (dis1 <=2)
+                {
+                    usedP1 = true;
+                    PlayHorrorSound();
+                    animCallback?.Invoke();
+                }
+            }
+            if (!usedP2)
+            {
+                var dis2 = Vector3.Distance(gameObject.transform.position, p2.position);
+                if (dis2 <= 2)
+                {
+                    usedP2 = true;
+                    PlayHorrorSound();
+                    animCallback?.Invoke();
+                }
+            }
+            
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -176,11 +208,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void PlayHorrorSound()
         {
+            Debug.Log("びっくり音!");
             int n = Random.Range(1, m_horrorSounds.Length);
             m_AudioSource.clip = m_horrorSounds[n];
             m_AudioSource.PlayOneShot(m_AudioSource.clip);
         }
-
+        public void AddAnimCallback(Action callback)
+        {
+            animCallback = callback;
+        }
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
