@@ -11,6 +11,7 @@ public class BackTitle : MonoBehaviour
 	// 「public」を必ずつけること（ポイント）
 	public void OnStartButtonClicked()
 	{
+		PlayerHeartRateData.GetInstance().SaveToFile();
 		SceneManager.LoadScene("Save");
 	}
 }

@@ -13,8 +13,8 @@ public class MainScene : MonoBehaviour
     [SerializeField]
     private FirstPersonController player;
 
-    private bool playHorrorSound = false;
-
+    private bool playHorror = false;
+    private float playInterval = default;
     // Use this for initialization
     void Start()
     {
@@ -24,10 +24,19 @@ public class MainScene : MonoBehaviour
 
     private void Update()
     {
-        if ( playHorrorSound)
+        if ( playHorror )
         {
-            playHorrorSound = false;
-            StartCoroutine(PlaySound());
+            playHorror = false;
+            if ( playInterval <= 0)
+            {
+                playInterval = 5;
+                StartCoroutine(PlayHorror());
+            }
+        }
+
+        if ( playInterval >= 0 )
+        {
+            playInterval -= Time.deltaTime;
         }
     }
 
@@ -42,12 +51,23 @@ public class MainScene : MonoBehaviour
 
     private void OnHeartOver()
     {
-        playHorrorSound = true;
+        playHorror = true;
     }
 
-    public IEnumerator PlaySound()
+    public IEnumerator PlayHorror()
     {
-        player.PlayHorrorSound();
+        float r = Random.Range(0, 1.0f);
+        if (r > 0.5)
+        {
+            player.PlayHorrorSound();
+        }
+        else {
+            Flash();
+        }
         yield break;
+    }
+
+    private void Flash()
+    {
     }
 }

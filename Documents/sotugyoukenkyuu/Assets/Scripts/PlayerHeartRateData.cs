@@ -60,6 +60,14 @@ public class PlayerHeartRateData
     private string GetCSV()
     {
         var sb = new StringBuilder("State,HeartRate,HeartRateAvg,HeartRateMax");
+        if (title != default)
+        {
+            sb.Append("\r\n").Append("title")
+                .Append(',').Append(title.heartRate.ToString())
+                .Append(',').Append(title.heartRateAvg.ToString())
+                .Append(',').Append(title.heartRateMax.ToString());
+        }
+        
         foreach (var rate in dataList)
         {
             sb.Append("\r\n").Append(rate.heartRateState)
