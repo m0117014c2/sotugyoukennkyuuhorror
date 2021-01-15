@@ -76,7 +76,7 @@ public class MainScene : MonoBehaviour
 
     private void Flash()
     {
-        flash.Show(1);
+        flash.Show(3);
     }
 
     private void Full()
