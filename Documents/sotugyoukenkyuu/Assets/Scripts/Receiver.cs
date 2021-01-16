@@ -17,7 +17,7 @@ public class Receiver : MonoBehaviour
         datas = PlayerHeartRateData.GetInstance();
 
         //ws = new WebSocket( "ws://localhost:7681","mionix-beta" );
-        ws = new WebSocket("ws://localhost:3000");
+        ws = new WebSocket("ws://localhost:7681","mionix-beta");
         ws.OnOpen += ( sender, e ) =>
         {
             Debug.Log( "WebSocket Open" );

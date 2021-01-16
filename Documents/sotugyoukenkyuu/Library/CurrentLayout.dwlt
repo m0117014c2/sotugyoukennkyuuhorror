@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 1
-  controlID: 15
+  controlID: 75
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 16
+  controlID: 76
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 17
+  controlID: 77
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -407,26 +407,26 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 1149}
-      m_SelectedIDs: 32300000
-      m_LastClickedID: 12338
-      m_ExpandedIDs: defbffffe02f0000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 8e230000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 12f5ffff66fbffffdefbffff6e2f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: bikkuri2
+        m_OriginalName: bikkuri2
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 12566
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 9}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -466,9 +466,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 15.700354, y: 43.503098, z: -51.09358}
+    m_Target: {x: -17.76375, y: 2006.1134, z: 0.68319726}
     speed: 2
-    m_Value: {x: 15.700354, y: 43.503098, z: -51.09358}
+    m_Value: {x: -17.76375, y: 2006.1134, z: 0.68319726}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -496,13 +496,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.3150965, y: -0.3304072, z: -0.11806407, w: -0.8818198}
+    m_Target: {x: -0.1261078, y: 0.7953502, z: -0.1772843, w: -0.5657608}
     speed: 2
-    m_Value: {x: 0.3150965, y: -0.3304072, z: -0.11806407, w: -0.8818198}
+    m_Value: {x: -0.1261078, y: 0.7953502, z: -0.1772843, w: -0.5657608}
   m_Size:
-    m_Target: 116.3045
+    m_Target: 9.775695
     speed: 2
-    m_Value: 116.3045
+    m_Value: 9.775695
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -535,8 +535,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 609
+    x: -32000
+    y: -31434
     width: 1367
     height: 431
   m_PersistentViewDataDictionary: {fileID: 0}
@@ -552,20 +552,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\m0117014\Documents\sotugyoukennkyuuhorror\Documents\sotugyoukenkyuu
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3e280000
-    m_LastClickedID: 10302
-    m_ExpandedIDs: 000000003e2800006628000098280000ae290000f4290000fa2a00002c2b00002e2b0000542b0000722b00009c2b0000ac2b0000ea2b0000f42b0000222c0000382c0000d82c0000e62c0000f22c0000f82c00002e2d0000302d00006e2d00009a2d0000e430000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 7a280000
+    m_LastClickedID: 10362
+    m_ExpandedIDs: 000000003e2800006628000098280000b0290000f6290000fe2a0000322b0000342b00005c2b00007a2b0000a42b0000b82b0000f62b0000002c00002e2c0000442c0000e42c0000f22c0000fe2c0000042d00003a2d00003c2d00007a2d0000a62d0000022f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -593,7 +593,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e2800006628000098280000ae290000f4290000fa2a00002c2b00002e2b0000542b0000722b00009c2b0000ac2b0000ea2b0000f42b0000222c0000382c0000d82c0000e62c0000f22c0000f82c00002e2d0000302d00006e2d00009a2d0000e4300000
+    m_ExpandedIDs: 000000003e2800006628000098280000b0290000f6290000fe2a0000322b0000342b00005c2b00007a2b0000a42b0000b82b0000f62b0000002c00002e2c0000442c0000e42c0000f22c0000fe2c0000042d00003a2d00003c2d00007a2d0000a62d0000022f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
