@@ -51,7 +51,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool usedP1 = false;
         private bool usedP2 = false;
 
-        Action animCallback = default;
+        Action<bool> animCallback = default;
 
         // Use this for initialization
         private void Start()
@@ -79,7 +79,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     usedP1 = true;
                     PlayHorrorSound();
-                    animCallback?.Invoke();
+                    animCallback?.Invoke(true);
+                    
                 }
             }
             if (!usedP2)
@@ -89,7 +90,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     usedP2 = true;
                     PlayHorrorSound();
-                    animCallback?.Invoke();
+                    animCallback?.Invoke(false);
                 }
             }
             
@@ -213,7 +214,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource.clip = m_horrorSounds[n];
             m_AudioSource.PlayOneShot(m_AudioSource.clip);
         }
-        public void AddAnimCallback(Action callback)
+        public void AddAnimCallback(Action<bool> callback)
         {
             animCallback = callback;
         }

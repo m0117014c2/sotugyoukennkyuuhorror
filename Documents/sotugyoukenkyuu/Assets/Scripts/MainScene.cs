@@ -79,8 +79,16 @@ public class MainScene : MonoBehaviour
         flash.Show(3);
     }
 
-    private void Full()
+    private void Full(bool isFirst)
     {
+        if (isFirst)
+        {
+            PlayerHeartRateData.GetInstance().RecordHeartRateAtBikuri1();
+        }
+        else
+        {
+            PlayerHeartRateData.GetInstance().RecordHeartRateAtBikuri2();
+        }
         full.Show(2);
     }
 }

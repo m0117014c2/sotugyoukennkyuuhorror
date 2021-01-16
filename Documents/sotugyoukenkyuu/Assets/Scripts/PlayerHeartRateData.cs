@@ -15,6 +15,8 @@ public class PlayerHeartRateData
     private List<HeartRate> dataList = new List<HeartRate>();
 
     private HeartRate title = default;
+    private HeartRate bikuri1= default;
+    private HeartRate bikuri2 = default;
 
     private Action overListener = default;
 
@@ -41,6 +43,21 @@ public class PlayerHeartRateData
             Debug.Log($"タイトル画面の心拍数:{title.heartRate}");
         }
     }
+
+    public void RecordHeartRateAtBikuri1()
+    {
+        bikuri1 = dataList.LastOrDefault();
+        if (title != null)
+        {
+            Debug.Log($"タイトル画面の心拍数:{title.heartRate}");
+        }
+    }
+
+    public void RecordHeartRateAtBikuri2()
+    {
+        bikuri2 = dataList.LastOrDefault();
+    }
+
     public void AddListener(Action callback)
     {
         overListener = callback;
@@ -67,7 +84,20 @@ public class PlayerHeartRateData
                 .Append(',').Append(title.heartRateAvg.ToString())
                 .Append(',').Append(title.heartRateMax.ToString());
         }
-        
+        if (bikuri1 != default)
+        {
+            sb.Append("\r\n").Append("bikuri1")
+                .Append(',').Append(bikuri1.heartRate.ToString())
+                .Append(',').Append(bikuri1.heartRateAvg.ToString())
+                .Append(',').Append(bikuri1.heartRateMax.ToString());
+        }
+        if (bikuri2 != default)
+        {
+            sb.Append("\r\n").Append("bikuri2")
+                .Append(',').Append(bikuri2.heartRate.ToString())
+                .Append(',').Append(bikuri2.heartRateAvg.ToString())
+                .Append(',').Append(bikuri2.heartRateMax.ToString());
+        }
         foreach (var rate in dataList)
         {
             sb.Append("\r\n").Append(rate.heartRateState)
