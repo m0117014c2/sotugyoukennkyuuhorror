@@ -82,28 +82,32 @@ public class PlayerHeartRateData
             sb.Append("\r\n").Append("title")
                 .Append(',').Append(title.heartRate.ToString())
                 .Append(',').Append(title.heartRateAvg.ToString())
-                .Append(',').Append(title.heartRateMax.ToString());
+                .Append(',').Append(title.heartRateMax.ToString())
+                .Append(',').Append(title.time); 
         }
         if (bikuri1 != default)
         {
             sb.Append("\r\n").Append("bikuri1")
                 .Append(',').Append(bikuri1.heartRate.ToString())
                 .Append(',').Append(bikuri1.heartRateAvg.ToString())
-                .Append(',').Append(bikuri1.heartRateMax.ToString());
+                .Append(',').Append(bikuri1.heartRateMax.ToString())
+                .Append(',').Append(bikuri1.time);
         }
         if (bikuri2 != default)
         {
             sb.Append("\r\n").Append("bikuri2")
                 .Append(',').Append(bikuri2.heartRate.ToString())
                 .Append(',').Append(bikuri2.heartRateAvg.ToString())
-                .Append(',').Append(bikuri2.heartRateMax.ToString());
+                .Append(',').Append(bikuri2.heartRateMax.ToString())
+                .Append(',').Append(bikuri2.time);
         }
         foreach (var rate in dataList)
         {
             sb.Append("\r\n").Append(rate.heartRateState)
                 .Append(',').Append(rate.heartRate.ToString())
                 .Append(',').Append(rate.heartRateAvg.ToString())
-                .Append(',').Append(rate.heartRateMax.ToString());
+                .Append(',').Append(rate.heartRateMax.ToString())
+                .Append(',').Append(rate.time);
         }
 
         return sb.ToString();

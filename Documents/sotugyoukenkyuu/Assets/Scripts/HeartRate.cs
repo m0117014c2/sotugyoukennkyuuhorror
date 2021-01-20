@@ -8,6 +8,7 @@ public class HeartRate
     public float heartRateAvg;
     public float heartRateMax;
     public float gsr;
+    public string time = string.Empty;
     public HeartRate()
     {
     }

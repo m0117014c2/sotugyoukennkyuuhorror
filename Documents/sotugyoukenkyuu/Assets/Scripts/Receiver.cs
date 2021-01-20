@@ -12,11 +12,15 @@ public class Receiver : MonoBehaviour
     private float interval = 1.0f;
     PlayerHeartRateData datas = default;
 
+    private DateTime start;
     void Start()
     {
+        start = DateTime.Now;
+
         datas = PlayerHeartRateData.GetInstance();
 
-        ws = new WebSocket( "ws://localhost:7681","mionix-beta" );
+        //ws = new WebSocket( "ws://localhost:7681","mionix-beta" );
+        ws = new WebSocket("ws://localhost:3000");
         ws.OnOpen += ( sender, e ) =>
         {
             Debug.Log( "WebSocket Open" );
@@ -51,11 +55,20 @@ public class Receiver : MonoBehaviour
         if (data.Contains("bioMetrics"))
         {
             HeartRate heartRate = JsonUtility.FromJson<HeartRate>(data);
+            try
+            {
+                var span = DateTime.Now - start;
+                heartRate.time = span.Minutes + "m:" + span.Seconds + "s";
+                Debug.Log($"heart rate time = {heartRate.time}");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex.Message);
+            }
+            
             datas.Add(heartRate);
-            //Debug.Log($"heart rate state = {heartRate.heartRateState}");
+            
             Debug.Log($"heart rate = {heartRate.heartRate}");
-            //Debug.Log($"heart rate avg = {heartRate.heartRateAvg}");
-            //Debug.Log($"heart rate max = {heartRate.heartRateMax}");
         }
         else
         {
