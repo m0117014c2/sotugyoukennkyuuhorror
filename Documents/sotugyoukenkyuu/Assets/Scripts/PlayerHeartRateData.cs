@@ -51,6 +51,11 @@ public class PlayerHeartRateData
         rate.memo = "kotei_bikkuri_2";
     }
 
+    public void RecordHeartRateAtBikuri()
+    {
+        var rate = dataList.LastOrDefault();
+        rate.memo = "bikkuri";
+    }
     public void AddListener(Action callback)
     {
         overListener = callback;
@@ -64,7 +69,6 @@ public class PlayerHeartRateData
         dataList.Add(heartRate);
         if (title != null && heartRate.heartRate < title.heartRate*1.05f )
         {
-            heartRate.memo = "bikkuri";
             overListener?.Invoke();
         }
     }

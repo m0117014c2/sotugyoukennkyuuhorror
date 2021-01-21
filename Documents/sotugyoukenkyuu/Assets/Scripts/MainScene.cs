@@ -34,6 +34,7 @@ public class MainScene : MonoBehaviour
             if ( playInterval <= 0)
             {
                 playInterval = 5;
+                PlayerHeartRateData.GetInstance().RecordHeartRateAtBikuri();
                 StartCoroutine(PlayHorror());
             }
         }
