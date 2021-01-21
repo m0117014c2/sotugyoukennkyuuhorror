@@ -66,6 +66,10 @@ public class PlayerHeartRateData
     }
     public void  Add(HeartRate heartRate)
     {
+        if (dataList.Contains(heartRate))
+        {
+            return;
+        }
         dataList.Add(heartRate);
         if (title != null && heartRate.heartRate < title.heartRate*1.05f )
         {
