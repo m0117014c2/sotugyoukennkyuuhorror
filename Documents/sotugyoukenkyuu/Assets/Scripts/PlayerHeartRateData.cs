@@ -15,8 +15,6 @@ public class PlayerHeartRateData
     private List<HeartRate> dataList = new List<HeartRate>();
 
     private HeartRate title = default;
-    private HeartRate bikuri1= default;
-    private HeartRate bikuri2 = default;
 
     private Action overListener = default;
 
@@ -38,24 +36,19 @@ public class PlayerHeartRateData
     public void RecordHeartRateAtTitle()
     {
         title = dataList.LastOrDefault();
-        if(title != null)
-        {
-            Debug.Log($"タイトル画面の心拍数:{title.heartRate}");
-        }
+        title.memo = "title";
     }
 
     public void RecordHeartRateAtBikuri1()
     {
-        bikuri1 = dataList.LastOrDefault();
-        if (title != null)
-        {
-            Debug.Log($"タイトル画面の心拍数:{title.heartRate}");
-        }
+        var rate = dataList.LastOrDefault();
+        rate.memo = "kotei_bikkuri_1";
     }
 
     public void RecordHeartRateAtBikuri2()
     {
-        bikuri2 = dataList.LastOrDefault();
+        var rate = dataList.LastOrDefault();
+        rate.memo = "kotei_bikkuri_2";
     }
 
     public void AddListener(Action callback)
@@ -71,43 +64,45 @@ public class PlayerHeartRateData
         dataList.Add(heartRate);
         if (title != null && heartRate.heartRate < title.heartRate*1.05f )
         {
+            heartRate.memo = "bikkuri";
             overListener?.Invoke();
         }
     }
     private string GetCSV()
     {
-        var sb = new StringBuilder("State,HeartRate,HeartRateAvg,HeartRateMax");
-        if (title != default)
-        {
-            sb.Append("\r\n").Append("title")
-                .Append(',').Append(title.heartRate.ToString())
-                .Append(',').Append(title.heartRateAvg.ToString())
-                .Append(',').Append(title.heartRateMax.ToString())
-                .Append(',').Append(title.time); 
-        }
-        if (bikuri1 != default)
-        {
-            sb.Append("\r\n").Append("bikuri1")
-                .Append(',').Append(bikuri1.heartRate.ToString())
-                .Append(',').Append(bikuri1.heartRateAvg.ToString())
-                .Append(',').Append(bikuri1.heartRateMax.ToString())
-                .Append(',').Append(bikuri1.time);
-        }
-        if (bikuri2 != default)
-        {
-            sb.Append("\r\n").Append("bikuri2")
-                .Append(',').Append(bikuri2.heartRate.ToString())
-                .Append(',').Append(bikuri2.heartRateAvg.ToString())
-                .Append(',').Append(bikuri2.heartRateMax.ToString())
-                .Append(',').Append(bikuri2.time);
-        }
+        var sb = new StringBuilder("State,HeartRate,HeartRateAvg,HeartRateMax,Time,Memo");
+        //if (title != default)
+        //{
+        //    sb.Append("\r\n").Append("title")
+        //        .Append(',').Append(title.heartRate.ToString())
+        //        .Append(',').Append(title.heartRateAvg.ToString())
+        //        .Append(',').Append(title.heartRateMax.ToString())
+        //        .Append(',').Append(title.time); 
+        //}
+        //if (bikuri1 != default)
+        //{
+        //    sb.Append("\r\n").Append("bikuri1")
+        //        .Append(',').Append(bikuri1.heartRate.ToString())
+        //        .Append(',').Append(bikuri1.heartRateAvg.ToString())
+        //        .Append(',').Append(bikuri1.heartRateMax.ToString())
+        //        .Append(',').Append(bikuri1.time);
+        //}
+        //if (bikuri2 != default)
+        //{
+        //    sb.Append("\r\n").Append("bikuri2")
+        //        .Append(',').Append(bikuri2.heartRate.ToString())
+        //        .Append(',').Append(bikuri2.heartRateAvg.ToString())
+        //        .Append(',').Append(bikuri2.heartRateMax.ToString())
+        //        .Append(',').Append(bikuri2.time);
+        //}
         foreach (var rate in dataList)
         {
             sb.Append("\r\n").Append(rate.heartRateState)
                 .Append(',').Append(rate.heartRate.ToString())
                 .Append(',').Append(rate.heartRateAvg.ToString())
                 .Append(',').Append(rate.heartRateMax.ToString())
-                .Append(',').Append(rate.time);
+                .Append(',').Append(rate.time)
+                .Append(',').Append(rate.memo);
         }
 
         return sb.ToString();

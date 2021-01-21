@@ -9,6 +9,8 @@ public class HeartRate
     public float heartRateMax;
     public float gsr;
     public string time = string.Empty;
+    public string memo = "sinpaku";
+
     public HeartRate()
     {
     }
