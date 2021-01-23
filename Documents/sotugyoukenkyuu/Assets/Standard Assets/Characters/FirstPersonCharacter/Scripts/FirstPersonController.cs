@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -52,7 +54,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool usedP2 = false;
 
         Action<bool> animCallback = default;
-
+        private Queue<AudioClip> soundQueue = new Queue<AudioClip>();
         // Use this for initialization
         private void Start()
         {
@@ -66,6 +68,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            var shuffle = m_horrorSounds.OrderBy(_ => Guid.NewGuid());
+            foreach (var c in shuffle)
+            {
+                soundQueue.Enqueue(c);
+            }
         }
 
 
@@ -210,8 +217,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public void PlayHorrorSound()
         {
             Debug.Log("びっくり音!");
-            int n = Random.Range(1, m_horrorSounds.Length);
-            m_AudioSource.clip = m_horrorSounds[n];
+            if ( soundQueue.Count == 0)
+            {
+                return;
+            }
+            
+            m_AudioSource.clip = soundQueue.Dequeue();
             m_AudioSource.PlayOneShot(m_AudioSource.clip);
         }
         public void AddAnimCallback(Action<bool> callback)

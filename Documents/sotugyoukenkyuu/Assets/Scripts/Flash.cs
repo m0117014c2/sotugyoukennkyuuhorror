@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +13,16 @@ public class Flash : MonoBehaviour
     [SerializeField]
     private Color[] colors = default;
 
+    private Queue<Color> colorQueue = new Queue<Color>();
+
     private void Awake()
     {
         gameObject.SetActive(false);
+        var shuffle = colors.OrderBy(_ => Guid.NewGuid());
+        foreach (var c in shuffle)
+        {
+            colorQueue.Enqueue(c);
+        }
     }
 
     public void Show(float duration)
@@ -24,11 +33,14 @@ public class Flash : MonoBehaviour
     }
     public IEnumerator Anim(float duration)
     {
-        Debug.Log("Flash start");
+        if ( colorQueue.Count == 0)
+        {
+            yield break;
+        }
         var t = 0f;
-        int n = Random.Range(1, colors.Length);
-        image.color = colors[n];
-        Debug.Log("color =" +image.color);
+        
+        image.color = colorQueue.Dequeue();
+        
         while (t < duration)
         {
             t += Time.deltaTime;
@@ -36,7 +48,6 @@ public class Flash : MonoBehaviour
             yield return null;
         }
         gameObject.SetActive(false);
-        Debug.Log("Flash end");
     }
 
 
